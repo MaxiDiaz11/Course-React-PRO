@@ -31,8 +31,24 @@ export const ShoppingPage = () => {
     [key: string]: ProductInCart;
   }>({});
 
-  const onProductCountChange = () => {
-    console.log("onProductCountChange");
+  const onProductCountChange = ({
+    count,
+    product,
+  }: {
+    count: number;
+    product: Product;
+  }) => {
+    setShoppingCart((oldShoppingCart) => {
+      if (count === 0) {
+        const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+        return rest;
+      }
+
+      return {
+        ...oldShoppingCart,
+        [product.id]: { ...product, count },
+      };
+    });
   };
 
   return (
@@ -51,7 +67,8 @@ export const ShoppingPage = () => {
             product={p}
             className="bg-dark text-white"
             key={p.id}
-            onChange={() => onProductCountChange()}
+            onChange={onProductCountChange}
+            value={shoppingCart[p.id]?.count || 0}
           >
             <ProductImage className="custom-image"></ProductImage>
             <ProductTittle className="text-tittle"></ProductTittle>
@@ -61,14 +78,25 @@ export const ShoppingPage = () => {
       </div>
 
       <div className="shopping-cart">
-        <ProductCard
-          product={product2}
-          className="bg-dark text-white"
-          style={{ width: "100px" }}
-        >
-          <ProductImage className="custom-image"></ProductImage>
-          <ProductButtons className="custom-buttons"></ProductButtons>
-        </ProductCard>
+        {Object.entries(shoppingCart).map(([key, productInCart]) => (
+          <ProductCard
+            key={key}
+            product={productInCart}
+            className="bg-dark text-white"
+            style={{ width: "100px" }}
+            onChange={onProductCountChange}
+            value={productInCart.count}
+          >
+            <ProductImage className="custom-image"></ProductImage>
+            <ProductButtons
+              className="custom-buttons"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            ></ProductButtons>
+          </ProductCard>
+        ))}
       </div>
     </div>
   );
