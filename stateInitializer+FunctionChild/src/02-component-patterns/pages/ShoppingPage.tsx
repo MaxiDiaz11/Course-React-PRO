@@ -5,58 +5,36 @@ import {
   ProductTittle,
 } from "../components";
 import { products } from "../data/products";
-import { useShoppingCart } from "../hooks/useShoppingCart";
 import "../styles/custom-styles.css";
 
-export const ShoppingPage = () => {
-  const { onProductCountChange, shoppingCart } = useShoppingCart();
+const product = products[0];
 
+export const ShoppingPage = () => {
   return (
     <div>
       <h1>Shopping Store</h1>
       <hr />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-        }}
-      >
-        {products.map((p) => (
-          <ProductCard
-            product={p}
-            className="bg-dark text-white"
-            key={p.id}
-            onChange={onProductCountChange}
-            value={shoppingCart[p.id]?.count || 0}
-          >
-            <ProductImage className="custom-image"></ProductImage>
-            <ProductTittle className="text-tittle"></ProductTittle>
-            <ProductButtons className="custom-buttons"></ProductButtons>
-          </ProductCard>
-        ))}
-      </div>
-
-      <div className="shopping-cart">
-        {Object.entries(shoppingCart).map(([key, productInCart]) => (
-          <ProductCard
-            key={key}
-            product={productInCart}
-            className="bg-dark text-white"
-            style={{ width: "100px" }}
-            onChange={onProductCountChange}
-            value={productInCart.count}
-          >
-            <ProductImage className="custom-image"></ProductImage>
-            <ProductButtons
-              className="custom-buttons"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-              }}
-            ></ProductButtons>
-          </ProductCard>
-        ))}
+      <div>
+        <ProductCard
+          product={product}
+          className="bg-dark text-white"
+          key={product.id}
+          initialValues={{
+            count: 4,
+            maxCount: 10,
+          }}
+        >
+          {() => (
+            <>
+              <ProductImage
+                className="custom-image"
+                style={{ boxShadow: "10 px 10px 10px rgba(0,0,0,0.2)" }}
+              ></ProductImage>
+              <ProductTittle className="text-tittle"></ProductTittle>
+              <ProductButtons className="custom-buttons"></ProductButtons>
+            </>
+          )}
+        </ProductCard>
       </div>
     </div>
   );
