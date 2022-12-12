@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-rc",
+  "version": "0.0.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -8,10 +8,9 @@
     "src"
   ],
   "repository": {
-    "url": "https://github.com/Klerith/do-product-card",
+    "url": "https://github.com/MaxiDiaz11/Course-React-PRO/tree/master/md-product-card",
     "type": "git"
   },
-  "homepage": "https://fernando-herrera.com",
   "engines": {
     "node": ">=10"
   },
@@ -39,8 +38,8 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "do-product-card",
-  "author": "Fernando Herrera",
+  "name": "md-product-card",
+  "author": "Maxi Diaz",
   "module": "dist/do-product-card.esm.js",
   "size-limit": [
     {
