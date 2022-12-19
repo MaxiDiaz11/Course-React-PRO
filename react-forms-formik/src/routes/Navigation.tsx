@@ -4,11 +4,13 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-import { FormikAbstraction } from "../forms/pages/FormikAbstraction";
-import { FormikBasicPage } from "../forms/pages/FormikBasicPage";
-import { FormikComponents } from "../forms/pages/FormikComponents";
-import { FormikYupPage } from "../forms/pages/FormikYupPage";
-import { RegisterPage } from "../forms/pages/RegisterPage";
+import {
+  FormikAbstraction,
+  FormikBasicPage,
+  FormikComponents,
+  FormikYupPage,
+  RegisterPage,
+} from "../forms/pages";
 
 import logo from "../logo.svg";
 
