@@ -1,9 +1,11 @@
 import { PlacesProvider } from "./context/places/PlacesProvider";
+import { HomePage } from "./screens";
+import "./styles.css";
 
 const MapsApp = () => {
   return (
     <PlacesProvider>
-      <h1>Hola mundo de nuevo</h1>
+      <HomePage></HomePage>
     </PlacesProvider>
   );
 };
